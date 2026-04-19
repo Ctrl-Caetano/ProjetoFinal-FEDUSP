@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: dengue_raw
+    database: postgres
+    schema: raw
+    description: "Dados brutos do SINAN - notificações de dengue 2021-2024"
+    
+    tables:
+      - name: dengue_notifications
+        description: "Tabela bruta com todas as notificações de dengue"

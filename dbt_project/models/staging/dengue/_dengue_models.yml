@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: stg_dengue
+    description: "Camada staging com dados brutos de notificações de dengue"
