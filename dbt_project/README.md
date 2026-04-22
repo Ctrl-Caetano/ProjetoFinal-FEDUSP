@@ -1,15 +1,47 @@
-Welcome to your new dbt project!
+# DBT - Projeto Dengue
 
-### Using the starter project
+Transformação de dados do SINAN (notificações de dengue 2021-2024).
 
-Try running the following commands:
-- dbt run
-- dbt test
+## Como executar
 
+```bash
+# Instalar dependências
+dbt deps
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+# Rodar transformações
+dbt run
+
+# Executar testes
+dbt test
+
+# Gerar documentação
+dbt docs generate
+dbt docs serve
+```
+
+## Estrutura
+
+- `models/staging/` - Dados limpos da camada raw
+- `models/marts/` - Star schema (1 fato + 10 dimensões)
+- `macros/` - Funções reutilizáveis
+- `tests/` - Validações customizadas
+
+## Requisitos
+
+- Dados carregados em `raw.dengue_notifications`
+- PostgreSQL rodando em `localhost:5432`
+- dbt-core e dbt-postgres instalados
+
+## Modelos criados
+
+**Staging:**
+- stg_dengue
+
+**Dimensões:**
+- dim_time, dim_location, dim_patient
+- dim_classificacao, dim_evolucao, dim_criterio
+- dim_tp_not, dim_tp_sistema
+- dim_agravo, dim_unidade
+
+**Fato:**
+- fact_notifications
